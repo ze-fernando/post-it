@@ -1,0 +1,693 @@
+/* profile.css - Estilos específicos do perfil */
+.profile-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Profile Cover - MELHORADO */
+.profile-cover {
+    height: 320px;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8, #1e40af);
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 80px;
+    border: 1px solid #404040;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.profile-cover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle at 30% 50%,
+        rgba(255, 255, 255, 0.1) 0%,
+        transparent 50%
+    );
+    pointer-events: none;
+}
+
+.profile-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cover-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8, #1e40af);
+    position: relative;
+}
+
+.cover-placeholder::after {
+    content: "📷";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 64px;
+    opacity: 0.2;
+    animation: pulse 3s ease-in-out infinite;
+}
+
+/* Edit Cover Button */
+.edit-cover-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    background-color: rgba(45, 45, 45, 0.9);
+    border: 2px solid #404040;
+    border-radius: 50%;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 2;
+    backdrop-filter: blur(5px);
+}
+
+.edit-cover-btn:hover {
+    background-color: #2563eb;
+    border-color: #2563eb;
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+/* Profile Avatar - MELHORADO */
+.profile-avatar-wrapper {
+    position: relative;
+    width: 100px;
+    margin: 0 auto;
+    margin-top: -40px;
+}
+
+.profile-avatar-large {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #2d2d2d;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    transition: all 0.3s ease;
+}
+
+.profile-avatar-large:hover {
+    transform: scale(1.02);
+    border-color: #2563eb;
+}
+
+.profile-avatar-large img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar-placeholder.large {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 56px;
+    font-weight: 600;
+    color: #ffffff;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+}
+
+/* Edit Avatar Button */
+.edit-avatar-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    background-color: #2d2d2d;
+    border: 2px solid #404040;
+    border-radius: 50%;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.edit-avatar-btn:hover {
+    background-color: #2563eb;
+    border-color: #2563eb;
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+/* Profile Info - MELHORADO */
+.profile-info {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    padding: 0 20px;
+}
+
+.profile-details {
+    margin-top: 20px;
+}
+
+.profile-details h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #ffffff, #e0e0e0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+}
+
+.profile-bio {
+    color: #a0a0a0;
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto 24px;
+    padding: 0 20px;
+    position: relative;
+}
+
+.profile-bio::before,
+.profile-bio::after {
+    content: '"';
+    color: #2563eb;
+    font-size: 24px;
+    opacity: 0.5;
+}
+
+.profile-bio::before {
+    margin-right: 4px;
+}
+
+.profile-bio::after {
+    margin-left: 4px;
+}
+
+/* Profile Stats - MELHORADO */
+.profile-stats {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 28px;
+}
+
+.stat-item {
+    text-align: center;
+    background: linear-gradient(135deg, #2d2d2d, #1a1a1a);
+    padding: 16px 32px;
+    border-radius: 16px;
+    border: 1px solid #404040;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-2px);
+    border-color: #2563eb;
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.2);
+}
+
+.stat-item strong {
+    display: block;
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 4px;
+}
+
+.stat-item span {
+    color: #808080;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+/* Edit Profile Button - MELHORADO */
+.btn-edit-profile {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8, #1e40af);
+    color: #ffffff;
+    border: none;
+    padding: 14px 36px;
+    border-radius: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-edit-profile::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition:
+        width 0.6s,
+        height 0.6s;
+}
+
+.btn-edit-profile:hover {
+    background: linear-gradient(135deg, #1e40af, #1d4ed8, #2563eb);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.5);
+}
+
+.btn-edit-profile:hover::before {
+    width: 400px;
+    height: 400px;
+}
+
+.btn-edit-profile:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+.btn-edit-profile i {
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.btn-edit-profile:hover i {
+    transform: rotate(10deg) scale(1.1);
+}
+
+/* Posts Section - MELHORADO */
+.profile-posts {
+    margin-top: 60px;
+}
+
+.profile-posts h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 28px;
+    color: #ffffff;
+    position: relative;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.profile-posts h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 28px;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    border-radius: 2px;
+}
+
+.profile-posts h2::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, #404040, transparent);
+    margin-left: 20px;
+}
+
+/* Posts Grid - MELHORADO */
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+/* Profile Post Card - MELHORADO */
+.profile-post-card {
+    background-color: #2d2d2d;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #404040;
+    transition: all 0.3s ease;
+    position: relative;
+    aspect-ratio: 1;
+    cursor: pointer;
+}
+
+.profile-post-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.profile-post-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+    border-color: #2563eb;
+}
+
+.profile-post-card:hover::before {
+    opacity: 1;
+}
+
+.profile-post-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.profile-post-card:hover img {
+    transform: scale(1.1);
+}
+
+.post-text-preview {
+    width: 100%;
+    height: 100%;
+    padding: 24px;
+    background: linear-gradient(135deg, #2563eb, rgba(37, 99, 235, 0.4));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.post-text-preview p {
+    color: #fff;
+    text-align: center;
+    line-height: 1.6;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.profile-post-card:hover .post-text-preview p {
+    color: #ffffff;
+}
+
+/* Post Overlay - MELHORADO */
+.post-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.95),
+        rgba(0, 0, 0, 0.7),
+        transparent
+    );
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.post-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.author-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+}
+
+.author-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar-placeholder.small {
+    font-size: 16px;
+}
+
+.author-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.author-info strong {
+    font-size: 16px;
+    margin-bottom: 4px;
+    color: #ffffff;
+}
+
+.author-info span {
+    font-size: 13px;
+    color: #808080;
+}
+
+.profile-post-card:hover .post-overlay {
+    opacity: 1;
+}
+
+.post-overlay span {
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 500;
+    background: rgba(37, 99, 235, 0.3);
+    padding: 4px 12px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+}
+
+/* Delete Post Button - MELHORADO */
+.delete-post {
+    width: 36px;
+    height: 36px;
+    background-color: rgba(239, 68, 68, 0.2);
+    border: 1px solid #ef4444;
+    border-radius: 50%;
+    color: #ef4444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.delete-post:hover {
+    background-color: #ef4444;
+    color: #ffffff;
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+}
+
+/* Empty State - MELHORADO */
+.empty-posts {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 80px 40px;
+    background: linear-gradient(135deg, #2d2d2d, #1a1a1a);
+    border-radius: 24px;
+    border: 2px dashed #404040;
+    transition: all 0.3s ease;
+}
+
+.empty-posts:hover {
+    border-color: #2563eb;
+    transform: scale(1.02);
+}
+
+.empty-posts i {
+    font-size: 64px;
+    color: #2563eb;
+    margin-bottom: 20px;
+    opacity: 0.7;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.empty-posts p {
+    color: #a0a0a0;
+    font-size: 18px;
+    margin-bottom: 24px;
+}
+
+/* Primary Button - MELHORADO */
+.btn-primary {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: #ffffff;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+}
+
+.btn-primary i {
+    transition: transform 0.3s ease;
+}
+
+.btn-primary:hover i {
+    transform: rotate(90deg);
+}
+
+/* Novas Animações */
+@keyframes pulse {
+    0%,
+    100% {
+        opacity: 0.2;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        opacity: 0.3;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+@keyframes bounce {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Responsividade - MELHORADA */
+@media (max-width: 768px) {
+    .profile-cover {
+        height: 220px;
+        border-radius: 16px;
+        margin-bottom: 70px;
+    }
+
+    .profile-avatar-wrapper {
+        width: 130px;
+        margin-top: -30px;
+    }
+
+    .profile-avatar-large {
+        width: 130px;
+        height: 130px;
+    }
+
+    .avatar-placeholder.large {
+        font-size: 44px;
+    }
+
+    .profile-details h1 {
+        font-size: 26px;
+    }
+
+    .profile-bio {
+        font-size: 14px;
+        padding: 0 16px;
+    }
+
+    .stat-item {
+        padding: 14px 28px;
+    }
+
+    .stat-item strong {
+        font-size: 24px;
+    }
+
+    .btn-edit-profile {
+        padding: 12px 32px;
+        font-size: 15px;
+    }
+
+    .posts-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-cover {
+        height: 160px;
+        border-radius: 12px;
+    }
+
+    .profile-avatar-wrapper {
+        width: 100px;
+        margin-top: -20px;
+    }
+
+    .profile-avatar-large {
+        width: 100px;
+        height: 100px;
+    }
+
+    .avatar-placeholder.large {
+        font-size: 36px;
+    }
+
+    .btn-edit-profile {
+        padding: 10px 24px;
+        font-size: 14px;
+    }
+
+    .posts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-post-card {
+        aspect-ratio: auto;
+        min-height: 220px;
+    }
+
+    .empty-posts {
+        padding: 60px 20px;
+    }
+
+    .empty-posts i {
+        font-size: 48px;
+    }
+
+    .empty-posts p {
+        font-size: 16px;
+    }
+}
