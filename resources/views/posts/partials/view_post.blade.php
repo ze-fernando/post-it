@@ -27,12 +27,6 @@
 
             <div id="modalPostImageContainer"></div>
 
-            <div class="modal-post-actions">
-                <button class="action-btn like-btn" onclick="likePost(this)">
-                    <i class="far fa-heart"></i>
-                    <span>Curtir</span>
-                </button>
-            </div>
         </div>
     </div>
 </div>

@@ -6,32 +6,15 @@
     <div class="profile-container">
         <!-- Informações do Perfil -->
         <div class="profile-info">
-            <div class="profile-avatar-large">
-                @if(auth()->user()->avatar)
-                    <img src="{{ auth()->user()->avatar }}" alt="{{ auth()->user()->name }}">
-                @else
-                    <div class="avatar-placeholder large">
-                        {{ substr(auth()->user()->name, 0, 2) }}
-                    </div>
-                @endif
-            </div>
-
             <div class="profile-details">
                 <h1>{{ auth()->user()->name }}</h1>
-                <p class="profile-bio">{{ auth()->user()->bio ?? 'Sem bio ainda' }}</p>
-
                 <div class="profile-stats">
                     <div class="stat-item">
                         <strong>{{ count($posts) ?? 0 }}</strong>
                         <span>Posts</span>
                     </div>
                 </div>
-
-                <button class="btn-edit-profile" onclick="editProfile()">
-                    <i class="fas fa-edit"></i>
-                    Editar Perfil
-                </button>
-            </div>
+           </div>
         </div>
 
         <!-- Posts do Usuário -->
@@ -47,10 +30,14 @@
                             </div>
                         <div class="post-overlay">
                             <span>{{ $post->created_at->format('d/m/Y') }}</span>
-                            <button class="delete-post" onclick="deletePost({{ $post->id }})">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
+                            <form action="{{route('posts.destroy', ['post' => $post])}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="delete-post">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </form>
+                       </div>
                     </div>
                 @empty
                     <div class="empty-posts">

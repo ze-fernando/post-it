@@ -36,16 +36,10 @@
                         </div>
                     </div>
 
+                    <strong>{{ $post->title}}</strong>
                     <div class="post-content">
                         <p>{{ $post->content }}</p>
                     </div>
-
-                    <div class="post-actions">
-                        <button class="action-btn like-btn">
-                            <i class="far fa-heart"></i>
-                            <span>{{$post->likes}} Curtidas </span>
-                        </button>
-                   </div>
                 </div>
             @empty
                 <div class="empty-state">

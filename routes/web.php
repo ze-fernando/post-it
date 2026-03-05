@@ -21,5 +21,6 @@ Route::controller(PostController::class)
     ->group(function () {
         Route::get("/", "index")->name("index");
         Route::get("profile", "profile")->name("profile");
-        Route::post("store", "store")->name("store");
+        Route::post("", "store")->name("store");
+        Route::delete("{post}", "destroy")->name("destroy");
     });

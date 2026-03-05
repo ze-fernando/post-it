@@ -56,14 +56,16 @@ document
 // Like animation
 document.querySelectorAll(".like-btn").forEach((btn) => {
     btn.addEventListener("click", function () {
-        const icon = this.querySelector("i");
-        icon.classList.toggle("far");
-        icon.classList.toggle("fas");
-        if (icon.classList.contains("fas")) {
-            this.style.color = "#ef4444";
-        } else {
-            this.style.color = "";
-        }
+        fetch(`/post/${postId}/like`, { method: "POST" }).then(() => {
+            const icon = this.querySelector("i");
+            icon.classList.toggle("far");
+            icon.classList.toggle("fas");
+            if (icon.classList.contains("fas")) {
+                this.style.color = "#ef4444";
+            } else {
+                this.style.color = "";
+            }
+        });
     });
 });
 

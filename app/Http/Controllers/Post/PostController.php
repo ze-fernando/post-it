@@ -10,7 +10,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::paginate(12);
+        $posts = Post::orderBy("created_at", "desc")->paginate(12);
         return view("posts.index", ["posts" => $posts]);
     }
     public function profile(Request $request)
@@ -31,5 +31,11 @@ class PostController extends Controller
 
         $post = Post::create(array_merge($data, ["user_id" => $user->id]));
         return redirect()->route("posts.profile", $post);
+    }
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+        return redirect()->route("posts.profile", $post->user);
     }
 }

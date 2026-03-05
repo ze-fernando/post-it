@@ -7,18 +7,9 @@
 
     <!-- Perfil do Usuário -->
     <div class="user-profile">
-        <div class="user-avatar">
-            @if(auth()->user()->avatar)
-                <img src="{{ auth()->user()->avatar }}" alt="{{ auth()->user()->name }}">
-            @else
-                <div class="avatar-placeholder">
-                    {{ substr(auth()->user()->name, 0, 2) }}
-                </div>
-            @endif
-        </div>
+
         <div class="user-info">
             <h3 class="user-name">{{ auth()->user()->name }}</h3>
-            <span class="user-role">{{ auth()->user()->role ?? 'Membro' }}</span>
         </div>
     </div>
 
