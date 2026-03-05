@@ -38,15 +38,12 @@
 
                     <div class="post-content">
                         <p>{{ $post->content }}</p>
-                        @if($post->image)
-                            <img src="{{ $post->image }}" alt="Post image" class="post-image">
-                        @endif
                     </div>
 
                     <div class="post-actions">
                         <button class="action-btn like-btn">
                             <i class="far fa-heart"></i>
-                            <span>Curtir</span>
+                            <span>{{$post->likes}} Curtidas </span>
                         </button>
                    </div>
                 </div>
@@ -62,4 +59,5 @@
             @endforelse
         </div>
     </div>
+    @include('posts.partials.view_post')
 @endsection
