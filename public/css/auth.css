@@ -1,0 +1,522 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background-color: #1a1a1a;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-container {
+    background-color: #2d2d2d;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    max-width: 450px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #404040;
+}
+
+/* Container de mensagens */
+.messages-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 350px;
+}
+
+/* Estilo base para mensagens */
+.message {
+    padding: 16px 20px;
+    border-radius: 8px;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    animation: slideInRight 0.3s ease forwards;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    border-left: 4px solid transparent;
+}
+
+/* Mensagem de sucesso */
+.message.success {
+    background-color: #10b981;
+    color: white;
+    border-left-color: #059669;
+}
+
+/* Mensagem de erro */
+.message.error {
+    background-color: #ef4444;
+    color: white;
+    border-left-color: #dc2626;
+}
+
+/* Mensagem de aviso */
+.message.warning {
+    background-color: #f59e0b;
+    color: white;
+    border-left-color: #d97706;
+}
+
+/* Mensagem de informação */
+.message.info {
+    background-color: #3b82f6;
+    color: white;
+    border-left-color: #2563eb;
+}
+
+/* Ícone da mensagem */
+.message i {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+/* Conteúdo da mensagem */
+.message-content {
+    flex: 1;
+    line-height: 1.5;
+}
+
+/* Botão de fechar */
+.message-close {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    opacity: 0.7;
+    padding: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.message-close:hover {
+    opacity: 1;
+}
+
+/* Barra de progresso para auto-destruição */
+.message-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background-color: rgba(255, 255, 255, 0.3);
+    animation: progress 3s linear forwards;
+}
+
+/* Cabeçalho com abas */
+.auth-header {
+    display: flex;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #404040;
+    position: relative;
+}
+
+.auth-tab {
+    flex: 1;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #808080;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.auth-tab.active {
+    color: #2563eb;
+}
+
+.auth-tab.active::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #2563eb;
+    animation: slideIn 0.3s ease;
+}
+
+/* Container dos formulários */
+.forms-wrapper {
+    position: relative;
+    min-height: 400px;
+}
+
+.auth-form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: all 0.4s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(20px);
+}
+
+.auth-form.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.auth-form.sign-up-form {
+    transform: translateX(-20px);
+}
+
+.auth-form.sign-up-form.active {
+    transform: translateX(0);
+}
+
+/* Título do formulário */
+.form-title {
+    font-size: 1.8rem;
+    color: #ffffff;
+    margin-bottom: 30px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    text-align: center;
+}
+
+/* Campos de input */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-field {
+    width: 100%;
+    background-color: #1a1a1a;
+    height: 50px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    border: 1px solid #404040;
+    transition: all 0.3s ease;
+}
+
+.input-field:hover {
+    border-color: #2563eb;
+}
+
+.input-field:focus-within {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.input-field i {
+    color: #2563eb;
+    font-size: 1.1rem;
+    width: 30px;
+    text-align: center;
+}
+
+.input-field input {
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-family: "Inter", sans-serif;
+}
+
+.input-field input::placeholder {
+    color: #808080;
+    font-weight: 300;
+}
+
+/* Botões */
+.btn {
+    width: 100%;
+    height: 50px;
+    background-color: #2563eb;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.btn:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Links adicionais */
+.auth-links {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.auth-links a {
+    color: #808080;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.auth-links a:hover {
+    color: #2563eb;
+}
+
+/* Divisor com texto "Ou" */
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+    color: #808080;
+    font-size: 0.9rem;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #404040;
+}
+
+.divider::before {
+    margin-right: 10px;
+}
+
+.divider::after {
+    margin-left: 10px;
+}
+
+/* Botões sociais */
+.social-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.social-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    background-color: #1a1a1a;
+    border: 1px solid #404040;
+    color: #808080;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.social-btn:hover {
+    background-color: #2563eb;
+    color: #ffffff;
+    border-color: #2563eb;
+    transform: translateY(-2px);
+}
+
+/* Termos e condições */
+.terms {
+    margin-top: 20px;
+    text-align: center;
+    color: #808080;
+    font-size: 0.85rem;
+}
+
+.terms a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.terms a:hover {
+    text-decoration: underline;
+}
+
+/* Mensagens de alerta */
+.alert-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 24px;
+    border-radius: 8px;
+    z-index: 1000;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    animation: slideDown 0.3s ease;
+}
+
+.alert-error {
+    background-color: #dc2626;
+    color: white;
+}
+
+.alert-success {
+    background-color: #2563eb;
+    color: white;
+}
+
+/* Loading spinner */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+}
+
+/*animações */
+@keyframes slideIn {
+    from {
+        width: 0;
+        left: 50%;
+    }
+    to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+    to {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    .auth-container {
+        padding: 30px 20px;
+    }
+
+    .form-title {
+        font-size: 1.5rem;
+    }
+
+    .auth-tab {
+        font-size: 1rem;
+        padding: 12px 0;
+    }
+
+    .input-field {
+        height: 45px;
+    }
+
+    .btn {
+        height: 45px;
+    }
+}
+
+/* Animações */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes progress {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0%;
+    }
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    .messages-container {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+
+    .message {
+        padding: 12px 16px;
+        font-size: 13px;
+    }
+}
